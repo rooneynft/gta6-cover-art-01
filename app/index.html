@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — sunset poster cover art maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls">
+    <h1>Vice Cover Studio</h1>
+    <p class="tagline">Your photo, three panels, one sunset poster. Pick photos, write the caption, export the cover.</p>
+
+    <fieldset class="panels">
+      <legend>Photos — one per panel</legend>
+      <div class="panel-row selected" data-panel="0">
+        <span class="panel-name">Panel 1 · Hero</span>
+        <input class="photo-file" type="file" accept="image/*" aria-label="Photo for panel 1">
+        <span class="sample-buttons">
+          <button type="button" data-sample="boulevard">Sample: sunset</button>
+          <button type="button" data-sample="pier">Sample: pier</button>
+        </span>
+      </div>
+      <div class="panel-row" data-panel="1">
+        <span class="panel-name">Panel 2</span>
+        <input class="photo-file" type="file" accept="image/*" aria-label="Photo for panel 2">
+        <span class="sample-buttons">
+          <button type="button" data-sample="boulevard">Sample: sunset</button>
+          <button type="button" data-sample="pier">Sample: pier</button>
+        </span>
+      </div>
+      <div class="panel-row" data-panel="2">
+        <span class="panel-name">Panel 3</span>
+        <input class="photo-file" type="file" accept="image/*" aria-label="Photo for panel 3">
+        <span class="sample-buttons">
+          <button type="button" data-sample="boulevard">Sample: sunset</button>
+          <button type="button" data-sample="pier">Sample: pier</button>
+        </span>
+      </div>
+      <label class="check"><input id="fill-all" type="checkbox" checked> One photo fills all three panels</label>
+    </fieldset>
+
+    <label class="field">Caption
+      <input id="caption" type="text" maxlength="32" value="Sunset Heist">
+    </label>
+    <label class="field">Sub-caption
+      <input id="sub" type="text" maxlength="48" value="One last job on the boulevard">
+    </label>
+
+    <label class="field">Zoom the selected panel
+      <span class="zoom-row"><input id="zoom" type="range" min="1" max="3" step="0.05" value="1"><output id="zoom-label">100%</output></span>
+    </label>
+    <p class="hint">Click a panel in the preview to select it, then drag the photo to move it.</p>
+
+    <fieldset class="pick">
+      <legend>Layout</legend>
+      <label><input type="radio" name="layout" value="hero-left" checked> Hero left</label>
+      <label><input type="radio" name="layout" value="hero-top"> Hero top</label>
+      <label><input type="radio" name="layout" value="triptych"> Triptych</label>
+    </fieldset>
+
+    <fieldset class="pick">
+      <legend>Colour grade</legend>
+      <label><input type="radio" name="grade" value="sunset" checked> Sunset</label>
+      <label><input type="radio" name="grade" value="neon"> Neon night</label>
+      <label><input type="radio" name="grade" value="dusk"> Palm dusk</label>
+    </fieldset>
+
+    <fieldset class="pick">
+      <legend>Post size</legend>
+      <label><input type="radio" name="size" value="square" checked> Square 1080 × 1080</label>
+      <label><input type="radio" name="size" value="portrait"> Portrait 1080 × 1350</label>
+      <label><input type="radio" name="size" value="wide"> Wide 1920 × 1080</label>
+    </fieldset>
+
+    <button id="export" type="button">Export PNG</button>
+    <p id="status" role="status">Load a photo to begin.</p>
+  </section>
+  <section class="preview">
+    <canvas id="cover" class="size-square" width="1080" height="1080" aria-label="The cover preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
